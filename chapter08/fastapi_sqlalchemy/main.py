@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from services.user import UserService
 from contextlib import asynccontextmanager
+from api.user import router_user
 
 
 async def startup_event():
@@ -20,3 +21,5 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
+
+app.include_router(router_user)
